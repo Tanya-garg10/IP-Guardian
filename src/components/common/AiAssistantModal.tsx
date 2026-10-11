@@ -191,11 +191,11 @@ export const AiAssistantModal: React.FC<AiAssistantModalProps> = ({
             <div className="flex items-center justify-between border-b border-slate-100 pb-2">
               <div className="flex items-center gap-2">
                 <span className={`text-[10px] font-mono px-2 py-0.5 rounded font-semibold ${
-                  response.ai_mode === 'live_gemini'
+                  response.ai_mode === 'live_featherless'
                     ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
                     : 'bg-amber-50 text-amber-800 border border-amber-200'
                 }`}>
-                  {response.ai_mode === 'live_gemini' ? 'Gemini 3.8 Flash (Live API)' : 'Administrative Fallback Engine'}
+                  {response.ai_mode === 'live_featherless' ? 'Llama 3.1 8B via Featherless (Live API)' : 'Administrative Fallback Engine'}
                 </span>
                 {response.notice && (
                   <span className="text-[10px] text-slate-400 hidden sm:inline">
@@ -236,7 +236,7 @@ export const AiAssistantModal: React.FC<AiAssistantModalProps> = ({
             <span>AI Architecture & Runtime Transparency</span>
           </div>
           <p className="leading-relaxed">
-            This module calls Google's latest <code className="font-mono text-slate-800">@google/genai</code> SDK with model <code className="font-mono text-slate-800">gemini-3.8-flash</code> via the backend server proxy (`/api/ai/assistant`). All prompts enforce non-legal administrative constraints to safeguard research novelty.
+            This module calls the <code className="font-mono text-slate-800">Featherless AI</code> API with model <code className="font-mono text-slate-800">meta-llama/Meta-Llama-3.1-8B-Instruct</code> via the backend server proxy (`/api/ai/assistant`). All prompts enforce non-legal administrative constraints to safeguard research novelty.
           </p>
         </div>
       </div>

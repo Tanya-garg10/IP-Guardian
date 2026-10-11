@@ -129,7 +129,7 @@ export interface UserProfile {
 }
 
 export interface AiAssistantResponse {
-  ai_mode: 'live_gemini' | 'simulated_fallback' | 'error_fallback';
+  ai_mode: 'live_featherless' | 'simulated_fallback' | 'error_fallback';
   model?: string;
   notice?: string;
   disclaimer: string;
