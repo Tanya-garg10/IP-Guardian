@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --canvas-ivory: #F8F7F3;
+    --navy-midnight: #1E2A49;
+    --cobalt-electric: #4563EB;
+    --mint-fresh: #DDF5E9;
+    --lavender-soft: #EFE8FF;
+    --coral-muted: #F9E2E7;
+  }
+
+  body {
+    background-color: #F8F7F3;
+    color: #1E2A49;
+    font-family: 'Inter', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* Custom design system utility classes */
+.bg-ivory {
+  background-color: #F8F7F3;
+}
+
+.text-midnight {
+  color: #1E2A49;
+}
+
+.bg-midnight {
+  background-color: #1E2A49;
+}
+
+.text-cobalt {
+  color: #4563EB;
+}
+
+.bg-cobalt {
+  background-color: #4563EB;
+}
+
+.bg-mint {
+  background-color: #DDF5E9;
+}
+
+.text-mint-dark {
+  color: #12633C;
+}
+
+.bg-lavender {
+  background-color: #EFE8FF;
+}
+
+.text-lavender-dark {
+  color: #55349E;
+}
+
+.bg-coral-muted {
+  background-color: #F9E2E7;
+}
+
+.text-coral-dark {
+  color: #9C243E;
+}
+
+.border-subtle {
+  border-color: #E7E3D8;
+}
+
+.card-command {
+  background-color: #FFFFFF;
+  border: 1px solid #E7E3D8;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px rgba(30, 42, 73, 0.03), 0 4px 12px rgba(30, 42, 73, 0.02);
+}
+
+.card-command-hover {
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-command-hover:hover {
+  border-color: #D2CCBE;
+  box-shadow: 0 4px 16px rgba(30, 42, 73, 0.06);
+}

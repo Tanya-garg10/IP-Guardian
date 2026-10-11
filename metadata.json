@@ -1,0 +1,6 @@
+{
+  "name": "IP Guardian",
+  "description": "Intellectual Property Management System for university innovation cells, student inventors, and research organisations to track patents, trademarks, copyrights, deadlines, and documents.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
