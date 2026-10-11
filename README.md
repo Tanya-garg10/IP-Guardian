@@ -1,10 +1,6 @@
 # IP Guardian — Innovation Command Center
 
-**Premium LegalTech SaaS Platform for University Innovation Cells & Tech Transfer**  
-*Social Impact Hackathon 2026*  
 *Tagline: Protect Ideas. Track Innovation. Never Miss a Deadline.*
-
----
 
 ## 1. Product Overview & Creative Direction
 
@@ -18,8 +14,6 @@
 - **Entity & AI Highlights:** Soft Lavender (`#EFE8FF`, `#55349E`)
 - **Restrained Warnings:** Muted Coral (`#F9E2E7`, `#9C243E`)
 - **Geometry:** 14–18px rounded borders (`rounded-2xl`, `rounded-xl`), single-elevation cards with subtle borders (`#E7E3D8`), and intentional asymmetry.
-
----
 
 ## 2. Core Functional Modules
 
@@ -81,16 +75,12 @@
 - **Empirical Metrics:** IP records organized, average completeness, tasks identified vs completed, vaulted files.
 - **Institutional Reports:** Real CSV export generation and print-ready summary tables.
 
----
-
 ## 3. Technology Stack
 
 - **Frontend:** React 19, TypeScript, Tailwind CSS v4, Recharts, Lucide React, Motion.
 - **Backend:** Node.js, Express 4.x, Multer, `@google/genai` TypeScript SDK.
 - **Persistence:** Atomic JSON file persistence (`./data/ip_guardian_db.json`) with safe atomic write swapping and zero native compilation dependencies.
 - **Target Architecture:** Complete Django 5.x and PostgreSQL models & serializers included in `backend_django_reference/`.
-
----
 
 ## 4. Quickstart Instructions
 
@@ -104,8 +94,6 @@ npm run dev
 # Access the Command Center
 http://localhost:3000
 ```
-
----
 
 ## 5. Mandatory Legal Disclaimer
 
