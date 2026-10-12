@@ -181,7 +181,7 @@ export const AiAssistantModal: React.FC<AiAssistantModalProps> = ({
             ) : (
               <Sparkles className="w-3.5 h-3.5" />
             )}
-            <span>{isLoading ? 'Analyzing with Gemini...' : 'Generate Analysis'}</span>
+            <span>{isLoading ? 'Analyzing...' : 'Generate Analysis'}</span>
           </button>
         </div>
 
@@ -195,7 +195,9 @@ export const AiAssistantModal: React.FC<AiAssistantModalProps> = ({
                     ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
                     : 'bg-amber-50 text-amber-800 border border-amber-200'
                 }`}>
-                  {response.ai_mode === 'live_featherless' ? 'Llama 3.1 8B via Featherless (Live API)' : 'Administrative Fallback Engine'}
+                  {response.ai_mode === 'live_featherless'
+                    ? 'Qwen2.5-72B via Featherless (Live API)'
+                    : 'Administrative Fallback Engine'}
                 </span>
                 {response.notice && (
                   <span className="text-[10px] text-slate-400 hidden sm:inline">
@@ -236,7 +238,7 @@ export const AiAssistantModal: React.FC<AiAssistantModalProps> = ({
             <span>AI Architecture & Runtime Transparency</span>
           </div>
           <p className="leading-relaxed">
-            This module calls the <code className="font-mono text-slate-800">Featherless AI</code> API with model <code className="font-mono text-slate-800">meta-llama/Meta-Llama-3.1-8B-Instruct</code> via the backend server proxy (`/api/ai/assistant`). All prompts enforce non-legal administrative constraints to safeguard research novelty.
+            This module calls the <code className="font-mono text-slate-800">Featherless AI</code> API with model <code className="font-mono text-slate-800">Qwen/Qwen2.5-72B-Instruct</code> via the backend server proxy (<code className="font-mono text-slate-800">/api/ai/assistant</code>). Set <code className="font-mono text-slate-800">FEATHERLESS_API_KEY</code> in your environment. All prompts enforce non-legal administrative constraints to safeguard research novelty.
           </p>
         </div>
       </div>

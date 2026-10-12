@@ -545,8 +545,8 @@ apiRouter.post('/reset-demo', (_req: Request, res: Response) => {
 });
 
 // ==========================================
-// 7. OPTIONAL AI IP ASSISTANT (Gemini Integration)
-// ==========================================
+// 7. AI IP ASSISTANT (Featherless — Qwen2.5-72B-Instruct)
+// =========================================================
 apiRouter.post('/ai/assistant', async (req: Request, res: Response) => {
   const { action, text, record_id, field_name } = req.body;
 
@@ -560,18 +560,17 @@ apiRouter.post('/ai/assistant', async (req: Request, res: Response) => {
 
   const apiKey = process.env.FEATHERLESS_API_KEY;
 
-  // If no Featherless key is configured, provide structured pre-computed domain response with setup guide
+  // If no key is configured, show structured administrative template
   if (!apiKey || apiKey === 'MY_FEATHERLESS_API_KEY') {
     return res.json({
       ai_mode: 'simulated_fallback',
-      notice: 'Featherless API key is not currently configured in runtime secrets. Displaying structured administrative template.',
+      notice: 'Featherless API key is not configured. Displaying structured administrative template.',
       disclaimer: 'Administrative guidance only. Does not replace formal patent attorney consultation.',
       result: getFallbackAiResponse(action, text, recordContext, field_name)
     });
   }
 
-  try {
-    const systemInstruction = `You are the IP Guardian LegalTech Administrative Assistant for university innovation cells and researchers.
+  const systemInstruction = `You are the IP Guardian LegalTech Administrative Assistant for university innovation cells and researchers.
 Your role is strictly non-legal administrative support:
 - Summarize IP descriptions and office documents into clear bullet points.
 - Extract candidate dates, applicant names, reference numbers, and administrative action items from text.
@@ -582,19 +581,20 @@ CRITICAL MANDATES:
 - NEVER invent fictitious statutory filing deadlines or claim legal guarantee.
 - Always include an administrative disclaimer.`;
 
-    let prompt = '';
-    if (action === 'summarize') {
-      prompt = `Provide a concise administrative summary (under 150 words) and key technical takeaways for this IP record or document excerpt:\n\n${text || recordContext}`;
-    } else if (action === 'extract') {
-      prompt = `Extract all potential administrative items from the following document or text excerpt into structured JSON format with: candidate_dates (array of {date, purpose}), names (array of inventors/owners), reference_numbers (array), and suggested_action_items (array of {action, urgency, source_passage}). Excerpt:\n\n${text || recordContext}`;
-    } else if (action === 'checklist') {
-      prompt = `Draft a non-legal administrative checklist of 4-6 preparation steps for an intellectual property asset in this review stage:\n\n${recordContext || text}`;
-    } else if (action === 'explain_field') {
-      prompt = `Explain the intellectual property concept or administrative field "${field_name || text}" in plain English for a university student inventor or researcher (under 80 words).`;
-    } else {
-      prompt = `Provide non-legal administrative IP workflow guidance for:\n\n${text || recordContext}`;
-    }
+  let prompt = '';
+  if (action === 'summarize') {
+    prompt = `Provide a concise administrative summary (under 150 words) and key technical takeaways for this IP record or document excerpt:\n\n${text || recordContext}`;
+  } else if (action === 'extract') {
+    prompt = `Extract all potential administrative items from the following document or text excerpt into structured JSON format with: candidate_dates (array of {date, purpose}), names (array of inventors/owners), reference_numbers (array), and suggested_action_items (array of {action, urgency, source_passage}). Excerpt:\n\n${text || recordContext}`;
+  } else if (action === 'checklist') {
+    prompt = `Draft a non-legal administrative checklist of 4-6 preparation steps for an intellectual property asset in this review stage:\n\n${recordContext || text}`;
+  } else if (action === 'explain_field') {
+    prompt = `Explain the intellectual property concept or administrative field "${field_name || text}" in plain English for a university student inventor or researcher (under 80 words).`;
+  } else {
+    prompt = `Provide non-legal administrative IP workflow guidance for:\n\n${text || recordContext}`;
+  }
 
+  try {
     const featherlessRes = await fetch('https://api.featherless.ai/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -602,7 +602,7 @@ CRITICAL MANDATES:
         'Authorization': `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        model: 'meta-llama/Meta-Llama-3.1-8B-Instruct',
+        model: 'Qwen/Qwen2.5-72B-Instruct',
         messages: [
           { role: 'system', content: systemInstruction },
           { role: 'user', content: prompt }
@@ -620,12 +620,12 @@ CRITICAL MANDATES:
 
     res.json({
       ai_mode: 'live_featherless',
-      model: 'meta-llama/Meta-Llama-3.1-8B-Instruct',
+      model: 'Qwen/Qwen2.5-72B-Instruct',
       disclaimer: 'Administrative guidance generated by IP Guardian Assistant. Not a legal opinion or formal patent search.',
       result: resultText
     });
   } catch (err: any) {
-    console.error('Featherless API execution error:', err);
+    console.error('Featherless API error:', err.message);
     res.json({
       ai_mode: 'error_fallback',
       notice: `AI service returned: ${err.message}. Showing administrative template.`,
