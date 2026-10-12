@@ -58,26 +58,26 @@ export const HeaderCommandBar: React.FC<HeaderCommandBarProps> = ({
   ];
 
   return (
-    <header className="sticky top-0 z-30 bg-[#F8F7F3]/90 backdrop-blur-md border-b border-[#E7E3D8] px-4 sm:px-6 lg:px-8 py-3 transition-colors">
-      <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+    <header className="sticky top-0 z-30 bg-[#F8F7F3]/90 backdrop-blur-md border-b border-[#E7E3D8] px-3 sm:px-6 lg:px-8 py-2.5 transition-colors">
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
         {/* Left: Brand & Workspace Switcher */}
-        <div className="flex items-center gap-3 min-w-0">
-          <div className="w-9 h-9 rounded-xl bg-[#1E2A49] flex items-center justify-center text-white shadow-xs shrink-0">
-            <Shield className="w-5 h-5 text-[#4563EB]" />
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#1E2A49] flex items-center justify-center text-white shadow-xs shrink-0">
+            <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-[#4563EB]" />
           </div>
 
           <div className="relative">
             <button
               type="button"
               onClick={() => setIsWorkspaceMenuOpen(!isWorkspaceMenuOpen)}
-              className="flex items-center gap-1.5 text-left group py-1 px-2 -ml-2 rounded-lg hover:bg-white/80 transition-colors"
+              className="flex items-center gap-1 text-left group py-1 px-1.5 -ml-1.5 rounded-lg hover:bg-white/80 transition-colors"
             >
               <div className="min-w-0">
                 <span className="text-xs font-bold tracking-tight text-[#1E2A49] block truncate">
                   IP Guardian
                 </span>
                 <span className="text-[11px] text-[#4563EB] font-medium flex items-center gap-1">
-                  <span className="truncate max-w-[140px] sm:max-w-[200px]">{activeWorkspace}</span>
+                  <span className="truncate max-w-[90px] sm:max-w-[160px] lg:max-w-[220px]">{activeWorkspace}</span>
                   <ChevronDown className="w-3 h-3 text-slate-400 group-hover:text-slate-600 shrink-0" />
                 </span>
               </div>
@@ -141,12 +141,12 @@ export const HeaderCommandBar: React.FC<HeaderCommandBarProps> = ({
         </div>
 
         {/* Right: Actions, AI Assistant, Notifications & Role */}
-        <div className="flex items-center gap-2 sm:gap-2.5">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           {/* AI IP Assistant Trigger */}
           <button
             type="button"
             onClick={onOpenAiAssistant}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 bg-[#EFE8FF] hover:bg-[#E4D8FF] text-[#55349E] text-xs font-semibold rounded-xl border border-[#D9C8FF] transition-colors shadow-2xs"
+            className="flex items-center gap-1.5 px-2 sm:px-2.5 py-1.5 bg-[#EFE8FF] hover:bg-[#E4D8FF] text-[#55349E] text-xs font-semibold rounded-xl border border-[#D9C8FF] transition-colors shadow-2xs"
             title="Open AI IP Assistant"
           >
             <Sparkles className="w-3.5 h-3.5 text-[#55349E]" />
@@ -298,10 +298,11 @@ export const HeaderCommandBar: React.FC<HeaderCommandBarProps> = ({
           <button
             type="button"
             onClick={onOpenNewRecord}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 bg-[#4563EB] hover:bg-[#344ec7] text-white text-xs font-semibold rounded-xl shadow-xs transition-colors whitespace-nowrap"
+            className="flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 bg-[#4563EB] hover:bg-[#344ec7] text-white text-xs font-semibold rounded-xl shadow-xs transition-colors whitespace-nowrap"
           >
             <Plus className="w-3.5 h-3.5" />
-            <span>Add Record</span>
+            <span className="hidden xs:inline sm:inline">Add Record</span>
+            <span className="sm:hidden">Add</span>
           </button>
         </div>
       </div>

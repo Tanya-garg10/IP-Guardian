@@ -80,3 +80,68 @@
   border-color: #D2CCBE;
   box-shadow: 0 4px 16px rgba(30, 42, 73, 0.06);
 }
+
+/* ============================================================
+   PRINT / PDF STYLES
+   ============================================================ */
+@media print {
+  /* Hide all chrome — sidebar, top bar, buttons */
+  aside,
+  header,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Full width for the content area */
+  body, main, .flex-1 {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  /* Reset card borders to simple lines */
+  .rounded-2xl, .rounded-xl {
+    border-radius: 4px !important;
+  }
+
+  /* Remove shadows */
+  * {
+    box-shadow: none !important;
+  }
+
+  /* Tables should not overflow — they print full width */
+  table {
+    width: 100% !important;
+    overflow: visible !important;
+    font-size: 10px !important;
+    page-break-inside: auto;
+  }
+
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  /* Print page margin */
+  @page {
+    margin: 18mm 14mm;
+    size: A4 portrait;
+  }
+
+  /* Show print-only elements */
+  .print-only {
+    display: block !important;
+  }
+
+  /* Keep colors for key headings */
+  .text-\[\#1E2A49\] {
+    color: #1E2A49 !important;
+  }
+}

@@ -92,7 +92,7 @@ export const SidebarCommand: React.FC<SidebarCommandProps> = ({
       id: 'ai' as CommandTab,
       label: 'AI IP Assistant',
       icon: <Sparkles className="w-4 h-4 text-[#55349E]" />,
-      badge: 'Gemini',
+      badge: 'Qwen',
       badgeColor: 'bg-[#EFE8FF] text-[#55349E]'
     },
     {
