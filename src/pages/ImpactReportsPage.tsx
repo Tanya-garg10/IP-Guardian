@@ -49,7 +49,7 @@ export const ImpactReportsPage: React.FC = () => {
     <div className="space-y-6">
 
       {/* ── Print-only report header (hidden on screen) ── */}
-      <div className="hidden print-only border-b-2 border-[#1E2A49] pb-4 mb-6">
+      <div className="hidden print:block border-b-2 border-[#1E2A49] pb-4 mb-6">
         <div className="flex items-start justify-between">
           <div>
             <div className="flex items-center gap-2 mb-1">
@@ -68,7 +68,7 @@ export const ImpactReportsPage: React.FC = () => {
       </div>
 
       {/* ── Screen Page Header ── */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 no-print">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 print:hidden">
         <div>
           <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#1E2A49]">
             Social Impact &amp; Institutional Reporting
@@ -239,7 +239,7 @@ export const ImpactReportsPage: React.FC = () => {
         </div>
 
         {/* Desktop/Print Table */}
-        <div className="hidden sm:block overflow-x-auto">
+        <div className="hidden sm:block print:block overflow-x-auto">
           <table className="w-full text-left text-xs border-collapse">
             <thead>
               <tr className="border-b border-[#E7E3D8] bg-[#F8F7F3] text-slate-600 font-semibold">
@@ -269,7 +269,7 @@ export const ImpactReportsPage: React.FC = () => {
         </div>
 
         {/* Mobile Card View */}
-        <div className="sm:hidden space-y-2">
+        <div className="sm:hidden print:hidden space-y-2">
           {records.map(r => (
             <div key={r.id} className="p-3 bg-[#F8F7F3] rounded-xl border border-[#E7E3D8] space-y-2">
               <div className="flex items-start justify-between gap-2">

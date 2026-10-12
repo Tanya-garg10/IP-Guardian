@@ -190,8 +190,9 @@ export default function App() {
           />
 
           {/* Main Workspace Frame */}
-          <div className="flex-1 min-w-0 flex flex-col">
-            {/* Top Command Bar with Workspace & Role switchers */}
+          <div className="flex-1 min-w-0 flex flex-col lg:ml-0">
+            {/* Top Command Bar — hidden on mobile (SidebarCommand has its own mobile top bar) */}
+            <div className="hidden lg:block">
             <HeaderCommandBar
               currentRole={currentRole}
               onRoleChange={(r) => {
@@ -212,9 +213,10 @@ export default function App() {
               onNavigateToDeadlines={() => setActiveTab('deadlines')}
               onSelectRecord={(id) => setSelectedRecordId(id)}
             />
+            </div>
 
             {/* Viewport Content */}
-            <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto">
+            <main className="flex-1 p-3 sm:p-5 lg:p-8 max-w-7xl w-full mx-auto overflow-x-hidden">
               {activeTab === 'dashboard' && (
                 <DashboardCommandPage
                   key={`dash-${refreshKey}`}

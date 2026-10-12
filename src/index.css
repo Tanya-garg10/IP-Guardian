@@ -85,38 +85,45 @@
    PRINT / PDF STYLES
    ============================================================ */
 @media print {
-  /* Hide all chrome — sidebar, top bar, buttons */
+  /* Hide sidebar, top header bar, action buttons */
   aside,
-  header,
-  .no-print {
+  header {
     display: none !important;
   }
 
-  /* Full width for the content area */
+  /* Break the flex row — make main content fill the page */
+  body > #root > div,
+  .flex.min-h-screen {
+    display: block !important;
+  }
+
+  /* Full-width, white content area */
   body, main, .flex-1 {
+    display: block !important;
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
     background: #fff !important;
-    color: #000 !important;
+    color: #111 !important;
   }
 
-  /* Reset card borders to simple lines */
+  /* Remove decorative styles */
+  * {
+    box-shadow: none !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
   .rounded-2xl, .rounded-xl {
     border-radius: 4px !important;
   }
 
-  /* Remove shadows */
-  * {
-    box-shadow: none !important;
-  }
-
-  /* Tables should not overflow — they print full width */
+  /* Tables print full width, no overflow */
   table {
     width: 100% !important;
-    overflow: visible !important;
-    font-size: 10px !important;
+    table-layout: auto !important;
+    font-size: 9.5pt !important;
     page-break-inside: auto;
   }
 
@@ -129,19 +136,8 @@
     display: table-header-group;
   }
 
-  /* Print page margin */
   @page {
-    margin: 18mm 14mm;
+    margin: 15mm 12mm;
     size: A4 portrait;
-  }
-
-  /* Show print-only elements */
-  .print-only {
-    display: block !important;
-  }
-
-  /* Keep colors for key headings */
-  .text-\[\#1E2A49\] {
-    color: #1E2A49 !important;
   }
 }
